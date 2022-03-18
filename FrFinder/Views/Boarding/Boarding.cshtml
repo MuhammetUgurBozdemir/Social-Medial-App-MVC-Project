@@ -1,0 +1,331 @@
+﻿@using FrFinder.Models;
+
+@{
+    Layout = null;
+    Ffinder_Database db = new Ffinder_Database();
+    var user = db.users.ToList();
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#myModal").modal('show');
+        });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/frfindercom/sayfalar/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+
+
+<body class="site">
+    <!--NAVBAR SECTİON-->
+    <div class="container-fluid ctn " Id="back">
+        <div class="container-fluid ">
+            <nav class="navbar navbar-expand-lg navbar-dark grad justify-content-between"
+                 style="padding: 10px!important;">
+                <a class="navbar-brand" href="index.html"><img class="logo" src="~/frfindercom/images/flogo.png"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+
+
+                    <div class="dropdown">
+                        <button class="btn   dropdown-toggle text-white" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <span style="font-weight: bold;">Home</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-white text-white" type="button" id="dropdownMenuButton3"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <span style="font-weight: bold;">Cars</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <li><a class="dropdown-item" href="newcars.html">New</a></li>
+                            <li><a class="dropdown-item" href="#">Used</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn   dropdown-toggle text-white" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <span style="font-weight: bold;">About</span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="about.html">About</a></li>
+                            <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+
+    </div>
+    <!--/NAVBAR SECTİON-->
+    <!--MAİN SECTİON-->
+    <div class="container-fluid vertical-center justify-content-center">
+        <div class="row justify-content-center ">
+            <div class="col-md-10  text-center justify-content-center">
+                <span class="display-1 text-white " style="font-weight: bold;">Sağa Kaydır </span>
+            </div>
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span style="font-weight: bold; font-size: x-large;">Sign Up</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--SİGN UP MODAL-->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">SİGN UP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body justify-content-center">
+                    <form action="~/Boarding/Boarding" method="post" enctype="multipart/form-data" class="justify-content-center we-form text-center">
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <i class="fa fa-user-circle fa-4x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <!--USERNAME-->
+                        <div class="row mt-1">
+                            <div class="col-md-3 float-left my-2">
+                                <p>Username:</p>
+                            </div>
+                            <div class="col-md-9 float-left text-start">
+                                <input class="m-1 w-100" type="text" id="name" name="name" placeholder="Username" required><br>
+                            </div>
+                        </div>
+                        <!--USERNAME-->
+                        <!--PASSWORD-->
+                        <div class="row">
+                            <div class="col-md-3 float-left my-2">
+                                <p>Password:</p>
+                            </div>
+                            <div class="col-md-9 float-left text-start">
+                                <input class="m-1 w-100" type="password" id="password" name="password" placeholder="Password" required><br>
+                            </div>
+                        </div>
+                        <!--PASSWORD-->
+                        <!--PASSWORD REPEAT-->
+                        <div class="row">
+                            <div class="col-md-3 float-left ">
+                                <p>Password Repeat:</p>
+                            </div>
+                            <div class="col-md-9 float-left text-start">
+                                <input class="m-1 w-100" type="password" id="repassword" name="repassword" placeholder="Repeat Password" required><br>
+                            </div>
+                        </div>
+                        <!--PASSWORD REPEAT-->
+                        <!--E-MAİL-->
+                        <div class="row">
+                            <div class="col-md-3 float-left my-2">
+                                <p>e-Mail:</p>
+                            </div>
+                            <div class="col-md-9 float-left text-start">
+                                <input class="m-1 w-100" type="email" id="email" name="email" placeholder="e-Mail" required><br>
+                            </div>
+                        </div>
+                        <!--E-MAİL-->
+                        <button type="submit" id="submit" disabled="disabled" onclick="SendEmail()" class=" btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#authModal"> Sign Up </button>
+                        <p id="warn" class="bg-white text-danger">@ViewBag.mail</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--SİGN UP MODAL-->
+    <!--MAİN SECTİON-->
+    <!--COMMENTS BLOGS SECTİON-->
+    <div class="container-fluid mt-5 d-flex align-items-center justify-content-center " style="background-color: white;">
+        <div class="row mt-5 ">
+            <div class="col-md-4">
+                <div class="card" style="width: 24rem; height: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 24rem; height: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">
+                            Tinder sayesinde hayatımın aşkını buldum ve evlenmeye karar verdik.
+
+                            Birkaç randevuya çıktıktan ve birkaç eğlenceli gece geçirdikten sonra Miranda'ya rastladım. Profilini ve özellikle de son cümlesini okuduktan sonra onu sağa kaydırma fikrine engel olamadım:
+                            ‘Hayat boyu yanımda olacak süper bebeğimi arıyorum.’ Yaklaşık bir hafta konuştuktan sonra ilk randevumuza çıktık ve onda özel bir şey olduğunu anladım!
+                        </p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 24rem; height: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--COMMENTS BLOGS SECTİON-->
+    <!--FOOTER SECTİON-->
+    <div class="container-fluid bg-white">
+        <div class="container mt-1 d-flex align-items-center justify-content-center" style="background-color: white;">
+            <div class="row  mt-5 ">
+                <div class=" col-md-3" style="width: 18rem; height: 18rem;">
+                    <span class="" style="font-weight: bold; font-size: x-large;">LEGAL</span>
+                    <ul class="list">
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div class=" col-md-3" style="width: 18rem; height: 18rem;">
+                    <span class="" style="font-weight: bold; font-size: x-large;">CAREER</span>
+                    <ul class="list">
+                        <li>Coffee</li>
+                        <li>Tea</li>
+                        <li>Milk</li>
+                    </ul>
+                </div>
+                <div class=" col-md-3" style="width: 18rem; height: 18rem;">
+                    <span class="" style="font-weight: bold; font-size: x-large;">SOCİAL</span><br>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <ul class="list">
+                                <li> <i class="fa fa-instagram m-1 fa-2x" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-facebook m-1 fa-2x" aria-hidden="true"></i></li>
+                                <li> <i class="fa fa-youtube-play m-1 fa-2x" aria-hidden="true"></i></li>
+                                <li>  <i class="fa fa-twitter m-1 fa-2x" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10">
+                            <ul class="list " style=" font-size: x-large;">
+                                <li class="">İnstagram</li>
+                                <li class="mt-1">Facebook</li>
+                                <li class="mt-1">Youtube</li>
+                                <li class="mt-1">twitter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-3" style="width: 18rem; height: 18rem;">
+                    <span class="" style="font-weight: bold; font-size: x-large;">LEGAL</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/FOOTER SECTİON-->
+
+
+
+    <script>
+        var w = window.innerHeight;
+        document.getElementById("back").style.height = "" + w + "px";
+
+
+    </script>
+    <script>
+        var myModal = document.getElementById('myModal')
+        var myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', function () {
+            myInput.focus()
+        })
+
+    </script>
+    <script>
+        var SendEmail = function () {
+            var matchvalue = $("#email").val(); // this.value
+            $.ajax({
+                type: "Post",
+                data: { matchvalue: matchvalue },
+                url: "/Boarding/SendMailToUser",
+
+                success: function (data) {
+
+                    alert("succes");
+                }
+            })
+        }
+    </script>
+
+    <script>
+        $('#repassword').change(function () {
+
+           
+            if ($("#password").val() != $("#repassword").val()) {
+                $('#submit').prop("disabled", true);
+                $('#warn').text("Sifreler Uyusmuyor.Lutfen kontrol ediniz.");
+            }
+            else {
+                $('#submit').prop("disabled", false);
+                $('#warn').text("");
+            }
+        });
+
+    </script>
+
+    <script src="script.js" language="javascript" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

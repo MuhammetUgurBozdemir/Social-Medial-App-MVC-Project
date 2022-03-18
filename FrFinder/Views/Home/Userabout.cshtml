@@ -1,0 +1,204 @@
+﻿@using FrFinder.Models;
+@{
+    ViewBag.Title = "Userabout";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Ffinder_Database db = new Ffinder_Database();
+    int userId = Convert.ToInt32(Session["UserId"]);
+    var user = db.users.Find(userId);
+    var userInf = db.userInformations.Where(x => x.UserId == userId).FirstOrDefault();
+}
+
+<section>
+    <div class="gap2 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row merged20" id="page-contents">
+                        <div class="user-profile">
+                            <figure>
+                                <div class="edit-pp">
+                                    <label class="fileContainer">
+                                        <i class="fa fa-camera"></i>
+                                        <input type="file">
+                                    </label>
+                                </div>
+                                <img src="~/frfindercom/sayfalar//wpkixx.com/html/pitnik/images/resources/profile-image.jpg" alt="">
+                                <ul class="profile-controls">
+                                    <li><a href="#" title="Add friend" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a></li>
+                                    <li><a href="#" title="Follow" data-toggle="tooltip"><i class="fa fa-star"></i></a></li>
+                                    <li><a class="send-mesg" href="#" title="Send Message" data-toggle="tooltip"><i class="fa fa-comment"></i></a></li>
+                                </ul>
+                                <ol class="pit-rate">
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class=""><i class="fa fa-star"></i></li>
+                                    <li><span>4.7/5</span></li>
+                                </ol>
+                            </figure>
+
+                            <div class="profile-section">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3">
+                                        <div class="profile-author">
+                                            <div class="profile-author-thumb">
+                                                <img alt="author" src="~/Content/images/profilepics/@userInf.UserPhoto">
+                                            </div>
+
+                                            <div class="author-content">
+                                                <a class="h4 author-name" href="about.html">@user.Name @user.Surname</a>
+                                                <div class="country">@userInf.City, @userInf.Country</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-9">
+                                        <ul class="profile-menu">
+                                            <li>
+                                                <a class="" href="~/Home/Usertimeline">Timeline</a>
+                                            </li>
+                                            <li>
+                                                <a class="active" href="~/Home/Userabout">About</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="~/Home/Friends">Friends</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="timeline-photos.html">Photos</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="timeline-videos.html">Videos</a>
+                                            </li>
+                                        </ul>
+                                        <ol class="folw-detail">
+                                            <li><span>Posts</span><ins>101</ins></li>
+                                            <li><span>Followers</span><ins>1.3K</ins></li>
+                                            <li><span>Following</span><ins>22</ins></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- user profile banner  -->
+                        <div class="col-lg-4 col-md-4">
+                            <aside class="sidebar">
+                                <div class="central-meta stick-widget">
+                                    <span class="create-post">Personal Info</span>
+                                    <div class="personal-head">
+                                        <span class="f-title"><i class="fa fa-user"></i> About Me:</span>
+                                        <p>
+                                            Hi, I’m John Carter, I’m 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-birthday-cake"></i> Birthday:</span>
+                                        <p>
+                                            December 17, 1985
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-phone"></i> Phone Number:</span>
+                                        <p>
+                                            +1-989-232435234
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-medkit"></i> Blood group:</span>
+                                        <p>
+                                            B+
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-male"></i> Gender:</span>
+                                        <p>
+                                            Male
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-globe"></i> Country:</span>
+                                        <p>
+                                            San Francisco, California, USA
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-briefcase"></i> Occupation:</span>
+                                        <p>
+                                            UI/UX Designer
+                                        </p>
+                                        <span class="f-title"><i class="fa fa-handshake-o"></i> Joined:</span>
+                                        <p>
+                                            December 20, 2001
+                                        </p>
+
+                                        <span class="f-title"><i class="fa fa-envelope"></i> Email & Website:</span>
+                                        <p>
+                                            <a href="wpkixx.html" title="">www.wpkixx.com</a> <a href="http://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="07576e73696e6c477e6872756a666e6b2964686a">[email&#160;protected]</a>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="col-lg-8 col-md-8">
+                            <div class="central-meta">
+                                <span class="create-post">Edit Your Profile</span>
+                                <div class="row">
+                                    <form action="~/Home/Userabout" method="post" class="c-form" enctype="multipart/form-data">
+                                        <div class="tab-pane fade show active pl-5" id="edit-profile">
+                                            <div class="setting-meta">
+                                                <div class="change-photo">
+                                                    <figure><img src="~/Content/images/profilepics/@userInf.UserPhoto" alt=""></figure>
+                                                    <div class="edit-img">
+                                                        <label class="fileContainer">
+                                                            <i class="fa fa-camera-retro"></i>
+                                                            Chage DP
+                                                            <input type="file" name="userimg" id="userimg">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="stg-form-area">
+
+                                                <div>
+                                                    <label>Display Name</label>
+                                                    <input type="text" value="@user.Name" name="username" id="username">
+                                                </div>
+                                                <div>
+                                                    <label>Display Surname</label>
+                                                    <input type="text" value="@user.Surname" name="usersurname" id="usersurname">
+                                                </div>
+
+                                                <div>
+                                                    <label>Telephone Number</label>
+                                                    <input type="text" value="@userInf.UserPhone" name="userphone" id="userphone">
+                                                </div>
+
+                                                <div>
+                                                    <label>Email Address</label>
+                                                    <input type="text" value="@user.Email" name="useremail" id="useremail">
+                                                </div>
+
+                                                <div>
+                                                    <label>about your profile</label>
+                                                    <textarea rows="3" value="write someting about yourself"></textarea>
+                                                </div>
+
+                                                <div>
+                                                    <label>Country</label>
+                                                    <input type="text" value="@userInf.Country" name="usercountry" id="usercountry">
+                                                </div>
+
+                                                <div>
+                                                    <label>State</label>
+                                                    <input type="text" value="@userInf.State" name="userstate" id="">
+                                                </div>
+                                                <div>
+                                                    <label>City</label>
+                                                    <input type="text" value="@userInf.City" name="usercity" id="usercity">
+                                                </div>
+                                                <div>
+                                                    <label>Province</label>
+                                                    <input type="text" value="@userInf.Province" name="userprovince" id="userprovince">
+                                                </div>
+                                                <div class="mt-2">
+                                                    <button type="submit" data-ripple="">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- content -->

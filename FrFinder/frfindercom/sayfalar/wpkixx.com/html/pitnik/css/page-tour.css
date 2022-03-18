@@ -1,0 +1,300 @@
+/* page tour */
+.introjs-overlay {
+position: absolute;
+z-index: 99;
+background-color: #000;
+opacity: 0;
+background: -o-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+background: radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
+	
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000',endColorstr='#e6000000',GradientType=1);
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+filter: alpha(opacity=50);
+	
+-webkit-transition: all 0.3s ease-out;
+-o-transition: all 0.3s ease-out;
+transition: all 0.3s ease-out;
+}
+.introjs-fixParent {
+z-index: auto;
+opacity: 1.0;
+position: absolute;
+-webkit-transform: none;
+-ms-transform: none;
+transform: none;
+}
+.introjs-showElement,
+tr.introjs-showElement > td,
+tr.introjs-showElement > th {
+z-index: 9999999 !important;
+}
+.introjs-disableInteraction {
+z-index: 99999999 !important;
+position: absolute;
+}
+.introjs-relativePosition,
+tr.introjs-showElement > td,
+tr.introjs-showElement > th {
+position: relative;
+}
+.introjs-helperLayer {
+position: absolute;
+z-index: 99;
+border: 1px solid #777;
+border: 1px solid rgba(0,0,0,.5);
+    border-radius: 0;
+-webkit-box-shadow: 0 2px 15px rgba(0,0,0,.4);
+        box-shadow: 0 2px 15px rgba(0,0,0,.4);
+-webkit-transition: all 0.3s ease-out;
+-o-transition: all 0.3s ease-out;
+transition: all 0.3s ease-out;
+}
+.introjs-tooltipReferenceLayer {
+position: absolute;
+z-index: 9999999999999999999999;
+background-color: rgba(255,255,255,.3);
+-webkit-transition: all 0.3s ease-out;
+-o-transition: all 0.3s ease-out;
+transition: all 0.3s ease-out;
+}
+.introjs-helperLayer *,
+.introjs-helperLayer *:before,
+.introjs-helperLayer *:after {
+-webkit-box-sizing: content-box;
+-ms-box-sizing: content-box;
+-o-box-sizing: content-box;
+box-sizing: content-box;
+}
+.introjs-helperNumberLayer {
+	position: absolute;
+	top: -16px;
+	left: -16px;
+	z-index: 9999999999 !important;
+	font-size: 10px;
+	font-weight: 600;
+	color: white;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	background: #000;
+	width: 20px;
+	height:20px;
+	line-height: 15px;
+	border: 1px solid white;
+    border-radius: 0;
+}
+.introjs-arrow {
+border: 5px solid white;
+content:'';
+position: absolute;
+}
+.introjs-arrow.top {
+top: -10px;
+border-top-color:transparent;
+border-right-color:transparent;
+border-bottom-color:white;
+border-left-color:transparent;
+}
+.introjs-arrow.top-right {
+top: -10px;
+right: 10px;
+border-top-color:transparent;
+border-right-color:transparent;
+border-bottom-color:white;
+border-left-color:transparent;
+}
+.introjs-arrow.top-middle {
+top: -10px;
+left: 50%;
+margin-left: -5px;
+border-top-color:transparent;
+border-right-color:transparent;
+border-bottom-color:white;
+border-left-color:transparent;
+}
+.introjs-arrow.right {
+right: -10px;
+top: 10px;
+border-top-color:transparent;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-left-color:white;
+}
+.introjs-arrow.right-bottom {
+bottom:10px;
+right: -10px;
+border-top-color:transparent;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-left-color:white;
+}
+.introjs-arrow.bottom {
+bottom: -10px;
+border-top-color:white;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-left-color:transparent;
+}
+.introjs-arrow.left {
+left: -10px;
+top: 10px;
+border-top-color:transparent;
+border-right-color:white;
+border-bottom-color:transparent;
+border-left-color:transparent;
+}
+.introjs-arrow.left-bottom {
+left: -10px;
+bottom:10px;
+border-top-color:transparent;
+border-right-color:white;
+border-bottom-color:transparent;
+border-left-color:transparent;
+}
+.introjs-tooltip {
+position: absolute;
+padding: 10px;
+background-color: white;
+min-width: 200px;
+max-width: 300px;
+    border-radius: 6px;
+-webkit-box-shadow: 0 1px 10px rgba(0,0,0,.4);
+        box-shadow: 0 1px 10px rgba(0,0,0,.4);
+-webkit-transition: opacity 0.1s ease-out;
+-o-transition: opacity 0.1s ease-out;
+transition: opacity 0.1s ease-out;
+}
+.introjs-tooltipbuttons {
+text-align: right;
+white-space: nowrap;
+}
+/*
+Buttons style by http://nicolasgallagher.com/lab/css3-github-buttons/
+Changed by Afshin Mehrabani
+*/
+.introjs-button {
+position: relative;
+overflow: visible;
+padding: 0.3em 0.8em;
+border: 1px solid #d4d4d4;
+margin: 0;
+text-decoration: none;
+text-shadow: 1px 1px 0 #fff;
+font: 11px/normal sans-serif;
+color: #333;
+white-space: nowrap;
+cursor: pointer;
+outline: none;
+background-color: #ececec;
+background-image: -o-linear-gradient(#f4f4f4, #ececec);
+background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#ececec));
+background-image: linear-gradient(#f4f4f4, #ececec);
+-webkit-background-clip: padding;
+-moz-background-clip: padding;
+-o-background-clip: padding-box;
+/*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+border-radius: 0.2em;
+/* IE hacks */
+zoom: 1;
+display: inline;
+margin-top: 10px;
+}
+.introjs-button:hover {
+border-color: #bcbcbc;
+text-decoration: none;
+-webkit-box-shadow: 0px 1px 1px #e3e3e3;
+        box-shadow: 0px 1px 1px #e3e3e3;
+}
+.introjs-button:focus,
+.introjs-button:active {
+background-image: -o-linear-gradient(#ececec, #f4f4f4);
+background-image: -webkit-gradient(linear, left top, left bottom, from(#ececec), to(#f4f4f4));
+background-image: linear-gradient(#ececec, #f4f4f4);
+}
+
+.introjs-tooltiptext {
+    color: #535165;
+    font-weight: 500;
+}
+
+/* overrides extra padding on button elements in Firefox */
+.introjs-button::-moz-focus-inner {
+padding: 0;
+border: 0;
+}
+.introjs-skipbutton {
+margin-right: 5px;
+color: #fa6342;
+}
+.introjs-prevbutton {
+border-radius: 0.2em 0 0 0.2em;
+border-right: none;
+}
+.introjs-nextbutton {
+border-radius: 0 0.2em 0.2em 0;
+	color: #333;
+}
+.introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
+color: #9a9a9a;
+border-color: #d4d4d4;
+    
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    
+cursor: default;
+background-color: #f4f4f4;
+background-image: none;
+text-decoration: none;
+}
+.introjs-bullets {
+text-align: center;
+}
+.introjs-bullets ul {
+clear: both;
+margin: 15px auto 0;
+padding: 0;
+display: inline-block;
+}
+.introjs-bullets ul li {
+list-style: none;
+float: left;
+margin: 5px 2px;
+}
+.introjs-bullets ul li a {
+display: block;
+width: 6px;
+height: 6px;
+background: #ccc;
+border-radius: 10px;
+text-decoration: none;
+}
+.introjs-bullets ul li a:hover {
+background: #999;
+}
+.introjs-bullets ul li a.active {
+background: #999;
+}
+.introjs-progress {
+overflow: hidden;
+height: 10px;
+margin: 10px 0 5px 0;
+    border-radius: 2px;
+background-color: #ecf0f1
+}
+.introjs-progressbar {
+float: left;
+width: 0%;
+height: 100%;
+font-size: 10px;
+line-height: 10px;
+text-align: center;
+background-color: #08c;
+}
+.introjsFloatingElement {
+position: absolute;
+height: 0;
+width: 0;
+left: 50%;
+top: 50%;
+}

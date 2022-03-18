@@ -1,0 +1,46 @@
+
+body , .container-fluid{
+    margin: 0px!important;
+    padding: 0px!important;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .btn{
+    height: 40%!important;
+  }
+  .logo{
+      height: 10%;
+      width: 10%;
+  }
+  .grad {
+    background-image: linear-gradient(black, transparent) ;
+  }
+  .site{
+    overflow-x: hidden;
+    background-color: black;
+    
+  }
+  .ctn{
+     background-image:url(https://tinder.com/static/build/5921afb1c3e6673d31a79697175df491.webp);
+     background-size:100%;
+     background-repeat: no-repeat; 
+     overflow-x:hidden!important ;
+   opacity: 0.7;
+    
+  }
+  .list {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0;
+  }
+  input{
+    padding: 3px;
+    border-radius: 10px;
+  }

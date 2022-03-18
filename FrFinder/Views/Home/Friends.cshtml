@@ -1,0 +1,205 @@
+﻿@using FrFinder.Models;
+@model List<User>
+@{
+    ViewBag.Title = "Friends";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Ffinder_Database db = new Ffinder_Database();
+    int userId = Convert.ToInt32(Session["UserId"]);
+    var user = db.users.Find(userId);
+    var userInf = db.userInformations.Where(x => x.UserId == userId).FirstOrDefault();
+    var friends = (IEnumerable<Match>)(from f in db.matches where f.SenderId == userId select f);
+}
+<section>
+    <div class="gap2 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row merged20" id="page-contents">
+                        <div class="user-profile">
+                            <figure>
+                                <div class="edit-pp">
+                                    <label class="fileContainer">
+                                        <i class="fa fa-camera" ></i>
+                                        <input type="file">
+                                    </label>
+                                </div>
+                                <img src="~/frfindercom/sayfalar/wpkixx.com/html/pitnik/images/resources/profile-image.jpg" alt="">
+                                <ul class="profile-controls">
+                                    <li><a href="#" title="Add friend" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a></li>
+                                    <li><a href="#" title="Follow" data-toggle="tooltip"><i class="fa fa-star"></i></a></li>
+                                    <li><a class="send-mesg" href="#" title="Send Message" data-toggle="tooltip"><i class="fa fa-comment"></i></a></li>
+                                    <li>
+                                        <div class="edit-seting" title="Edit Profile image">
+                                            <i class="fa fa-sliders"></i>
+                                            <ul class="more-dropdown">
+                                                <li><a href="setting.html" title="">Update Profile Photo</a></li>
+                                                <li><a href="setting.html" title="">Update Header Photo</a></li>
+                                                <li><a href="setting.html" title="">Account Settings</a></li>
+                                                <li><a href="support-and-help.html" title="">Find Support</a></li>
+                                                <li><a class="bad-report" href="#" title="">Report Profile</a></li>
+                                                <li><a href="#" title="">Block Profile</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ol class="pit-rate">
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class="rated"><i class="fa fa-star"></i></li>
+                                    <li class=""><i class="fa fa-star"></i></li>
+                                    <li>4.7/5</li>
+                                </ol>
+                            </figure>
+
+                            <div class="profile-section">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-3">
+                                        <div class="profile-author">
+                                            <div class="profile-author-thumb">
+                                                <img alt="author" src="~/Content/images/profilepics/@userInf.UserPhoto">
+                                                <div class="edit-dp">
+                                                    <label class="fileContainer">
+                                                        <i class="fa fa-camera"></i>
+                                                        <input type="file">
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="author-content">
+                                                <a class="h4 author-name" href="about.html">@user.Name @user.Surname</a>
+                                                <div class="country">@userInf.Country,@userInf.City</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-9">
+                                        <ul class="profile-menu">
+                                            <li>
+                                                <a class="" href="~/Home/Usertimeline">Timeline</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="~/Home/Userabout">About</a>
+                                            </li>
+                                            <li>
+                                                <a class="active" href="timeline-friends.html">Friends</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="timeline-photos.html">Photos</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="timeline-videos.html">Videos</a>
+                                            </li>
+                                            <li>
+                                                <div class="more">
+                                                    <i class="fa fa-ellipsis-h"></i>
+                                                    <ul class="more-dropdown">
+                                                        <li>
+                                                            <a href="timeline-groups.html">Profile Groups</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="statistics.html">Profile Analytics</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <ol class="folw-detail">
+                                            <li><span>Posts</span><ins>101</ins></li>
+                                            <li><span>Followers</span><ins>1.3K</ins></li>
+                                            <li><span>Following</span><ins>22</ins></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- user profile banner  -->
+                        <div class="col-lg-12">
+                            <div class="central-meta">
+                                <div class="title-block">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="align-left">
+                                                <h5>Friends / Followers <span>@friends.Count()</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row merged20">
+                                                <div class="col-lg-7 col-lg-7 col-sm-7">
+                                                    <form method="post">
+                                                        <input type="text" placeholder="Search Friend">
+                                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                                    <div class="select-options">
+                                                        <select class="select">
+                                                            <option>Sort by</option>
+                                                            <option>A to Z</option>
+                                                            <option>See All</option>
+                                                            <option>Newest</option>
+                                                            <option>oldest</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-1 col-md-1 col-sm-1">
+                                                    <div class="option-list">
+                                                        <i class="fa fa-ellipsis-v"></i>
+                                                        <ul>
+                                                            <li><a title="" href="#">Show Friends Public</a></li>
+                                                            <li><a title="" href="#">Show Friends Private</a></li>
+                                                            <li><a title="" href="#">Mute Notifications</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- title block -->
+                            <div class="central-meta padding30">
+                                <div class="row">
+                                    @foreach (var friend in Model)
+                                    {
+                                        var userInfo = db.userInformations.Where(x => x.UserId == friend.Id).FirstOrDefault();
+                                        var follower = (IEnumerable<Match>)(from f in db.matches where f.SenderId == friend.Id || f.ReceiverId==friend.Id select f);
+                                        var posts= (IEnumerable<Post>)(from p in db.posts where p.UserId == friend.Id select p);
+                                        <div class="col-lg-3 col-md-6 col-sm-6">
+                                            <div class="friend-box">
+                                                <figure>
+                                                    <img src="~/frfindercom/sayfalar/wpkixx.com/html/pitnik/images/resources/frnd-cover1.jpg" alt="">
+                                                    <span>Followers: @follower.Count()</span>
+                                                </figure>
+                                                <div class="frnd-meta">
+                                                    <img src="~/Content/images/profilepics/@userInfo.UserPhoto" alt="" width="50%">
+                                                    <div class="frnd-name">
+                                                        <a href="#" title="">@friend.Name @friend.Surname</a>
+                                                        <span>@userInfo.City, @userInfo.Country</span>
+                                                    </div>
+                                                    <ul class="frnd-info mt-5">
+                                                        <li><span>Friends:</span> @follower.Count()</li>
+                                                        <li><span>Post:</span> @posts.Count()</li>
+                                                        <li><span>Since:</span> December, 2014</li>
+                                                    </ul>
+                                                    <div class="more-opotnz">
+                                                        <i class="fa fa-ellipsis-h"></i>
+                                                        <ul>
+                                                            <li><a href="#" title="">Block</a></li>
+                                                            <li><a href="#" title="">UnBlock</a></li>                                                         
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="lodmore">
+                                    <span>Viewing 1-8 of Lists</span>
+                                    <button class="btn-view btn-load-more"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

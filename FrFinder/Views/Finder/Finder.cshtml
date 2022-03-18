@@ -1,0 +1,199 @@
+﻿@using FrFinder.Models;
+@model List<User>
+@{
+    Layout = null;
+    Ffinder_Database db = new Ffinder_Database();
+    int userId = Convert.ToInt32(Session["UserId"]);
+    var user = db.users.Find(userId);
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/frfindercom/Finder/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Finder</title>
+</head>
+
+<body style="overflow-x: hidden; overflow-y: hidden;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--LeftMenu-->
+            <div class="col-md-3 p-0">
+                <div class="findernav d-flex align-items-center " style="height:100px;">
+                    <div class="col-md-6  ">
+                        <img src="~/frfindercom/Finder/p1.jpg"  class="rounded-circle m-3" style="width: 20%; height: 80%;"
+                             alt="">
+                        <span class="text-white" style="font-weight: bold;">Username</span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end me-2">
+                            <i class="fa fa-shopping-bag text-white" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Matches</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Messages</a>
+                    </li>
+                </ul>
+                <div class="d-flex flex-column mt-5 align-items-center justify-content-center">
+                    <div class="rounded findernav" style="width: 12rem; height: 15rem;">
+                    </div>
+                    <div class="rounded " style="width: 12rem; height: 15rem;">
+                        <span>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, reiciendis. Molestiae
+                            quaerat maxime, atque et provident incidunt voluptate facilis eius, non explicabo dolore
+                            delectus. Exercitationem ullam fuga cupiditate. Eos, sed?
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--LeftMenu-->
+            <!--İnnerCarousel-->
+            <div class="col-md-9 grey">
+
+
+
+                <div class="box close">
+                    <div class="d-flex justify-content-center mt-5 align-items-center">
+
+
+                        <img class="d-block w-100 sliderimg" id="profile" src="~/frfindercom/Finder/p2.jpg" alt="First slide">
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3 align-items-center">
+                        <div class="col-md-4">
+                            <div>
+                                <span class="d-flex flex-row" id="Name" style="font-weight:bold"></span>
+                                <span class="d-flex flex-row" id="Surname" style="font-weight:bold"></span>
+                                <span class="d-flex flex-row">You are living in the same city</span>
+                                <hr>
+                                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam doloribus vitae magnam illum ducimus iste placeat, saepe libero. Blanditiis beatae enim dicta neque placeat possimus corrupti quisquam necessitatibus tempora excepturi!</span>
+                                <hr>
+
+                                <span class="badge bg-secondary">New</span>
+                                <span class="badge bg-secondary">New</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-center grey mt-3 align-items-center fixed">
+                    <span class="border border-warning rounded-circle m-2 p-2" style="font-size: xx-large;">
+                        <button type="submit" id="return" value="" class="btn fa fa-undo text-warning" aria-hidden="true"></button>
+                    </span>
+                    <span class="border border-danger rounded-circle m-2 p-2" style="font-size: xx-large;">
+                        <button class="fa fa-times btn  text-danger fa-xl" aria-hidden="true"></button>
+                    </span>
+                    <span class="border border-info rounded-circle m-2 p-2" style="font-size: xx-large;">
+                        <button class="btn fa fa-star text-info fa-xl" aria-hidden="true"></button>
+                    </span>
+                    <span class="border border-success rounded-circle m-2 p-2" style="font-size: xx-large;">
+                        <button type="submit" id="getdata" value="" class="btn fa fa-heart text-success fa-xl" aria-hidden="true"></button>
+                    </span>
+                    <span class="borderpurple m-2 p-2" style="font-size: xx-large;">
+                        <button class="fa fa-bolt btn purple fa-xl" aria-hidden="true"></button>
+                    </span>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+        <!--İnnerCarousel-->
+        <input id="no" type="hidden" value="1">
+    </div>
+
+
+    <script type="text/javascript">
+        $("#return").click(function () {
+
+            document.getElementById('no').value--;
+            var ID = $("#no").val();
+            alert(ID);
+            $.ajax({
+                url: "/Finder/GetID/" + ID,
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    $("#Name").html(data.Name);
+                    $("#Surname").html(data.Surname);
+                    $('#profile').attr('src', '../frfindercom/Finder/p' + ID + '.jpg');
+
+                }
+            })
+
+        })
+
+    </script>
+
+    <script type="text/javascript">
+        $("#getdata").click(function () {
+
+            document.getElementById('no').value++;
+            var ID = $("#no").val();
+            alert(ID);
+            $.ajax({
+                url: "/Finder/GetID/" + ID,
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    $("#Name").html(data.Name);
+                    $("#Surname").html(data.Surname);
+                    $('#profile').attr('src', '../frfindercom/Finder/p' + ID + '.jpg');
+
+                }
+            })
+
+        })
+
+    </script>
+
+
+
+
+    <script>
+        var $box = $('.box'),
+            $btn = $('.toggle');
+
+        $box.on('click', function () {
+            var $this = $(this);
+            if ($this.hasClass('open')) {
+                $this.removeClass('open').addClass('close');
+            } else {
+                $this.removeClass('close').addClass('open');
+            }
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

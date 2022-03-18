@@ -1,0 +1,116 @@
+
+body , .container-fluid{
+    margin: 0px!important;
+    padding: 0px!important;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .btn{
+    height: 40%!important;
+  }
+  .logo{
+      height: 10%;
+      width: 10%;
+  }
+  .grad {
+    background-image: linear-gradient(black, transparent) ;
+  }
+  .site{
+    overflow-x: hidden;
+    background-color: black;
+    
+  }
+.centerleft {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);   
+    padding: 10px;
+}
+  .ctn{
+     background-image:url(https://tinder.com/static/build/5921afb1c3e6673d31a79697175df491.webp);
+     background-size:100%;
+     background-repeat: no-repeat; 
+     overflow-x:hidden!important ;
+   opacity: 0.7;
+    
+  }
+  .list {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0;
+  }
+  .findernav{
+    background-image: linear-gradient(to right,rgb(255, 29, 51), rgb(233, 98, 8)) ;
+  }
+
+  a{
+    text-decoration: none !important;
+    color: black;
+    font-weight: bold;
+  }
+  .sliderimg{
+    width: 25rem!important; 
+    height:35rem!important;
+  }
+
+.purple{
+  color: purple;
+}
+.borderpurple{
+  background-color:#fff;
+  border:1px solid purple;  
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  
+}
+
+.btn2{
+  z-index: 100;
+}
+.grey{
+  background-color:rgb(211,211,211);
+}
+
+.open {
+  -webkit-transform-origin: 100% 50%;
+  -webkit-animation: openAnimation 0.5s both ease-in;
+}
+
+.shadow{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.close {
+ 
+  -webkit-transform-origin: 100% 50%;
+  -webkit-animation: closeAnimation 0.5s both ease-in;
+}
+
+@-webkit-keyframes openAnimation {
+    0% {
+          -webkit-transform: translateY(0px);
+    }
+    100% {
+          -webkit-transform: translateY(-300px);
+    }
+}
+
+@-webkit-keyframes closeAnimation {
+    0% {
+      -webkit-transform: translateY(-300px);
+    }
+    100% {
+      -webkit-transform: translateY(0px);
+    }
+}
+
+
+
+

@@ -1,0 +1,100 @@
+﻿@using FrFinder.Models;
+@model List<User>
+@{
+    Layout = null;
+    Ffinder_Database db = new Ffinder_Database();
+    int userId = Convert.ToInt32(Session["UserId"]);
+    var user = db.users.Find(userId);
+}
+<div class="col-md-9 grey">
+    <input type="submit" id="personID" style="margin-left: 28%;">
+        <span class="fa fa-arrow-left text-dark" style="font-size:30px" aria-hidden="true"></span>        
+    <
+    <button onclick="GetPerson()" style="margin-left: 28%;">
+        <span class="fa fa-arrow-right text-dark" style="font-size:30px" aria-hidden="true"></span>       
+    </button>
+        <div class="box close">
+            <div class="d-flex justify-content-center mt-5 align-items-center">
+                <div id="carouselExampleIndicators" class="carousel slide   " data-bs-interval="false"
+                     data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active">
+                        </li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner sliderimg">
+                        <div class="carousel-item active shadow ">
+                            <img class="d-block w-100 sliderimg" src="~/frfindercom/Finder/p2.jpg" alt="First slide">
+                        </div>
+                        <div class="carousel-item shadow">
+                            <img class="d-block w-100 sliderimg " src="~/frfindercom/Finder/p2.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item shadow">
+                            <img class="d-block w-100 sliderimg " src="~/frfindercom/Finder/p3.jpg" alt="Third slide">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 align-items-center">
+                <span class="border border-warning rounded-circle m-2 p-2" style="font-size: xx-large;">
+                    <i class="fa fa-undo text-warning" aria-hidden="true"></i>
+                </span>
+                <span class="border border-danger rounded-circle m-2 p-2" style="font-size: xx-large;">
+                    <i class="fa fa-times  text-danger fa-xl" aria-hidden="true"></i>
+                </span>
+                <span class="border border-info rounded-circle m-2 p-2" style="font-size: xx-large;">
+                    <i class="fa fa-star text-info fa-xl" aria-hidden="true"></i>
+                </span>
+                <span class="border border-success rounded-circle m-2 p-2" style="font-size: xx-large;">
+                    <i class="fa fa-heart text-success fa-xl" aria-hidden="true"></i>
+                </span>
+                <span class="borderpurple m-2 p-2" style="font-size: xx-large;">
+                    <i class="fa fa-bolt purple fa-xl" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="d-flex justify-content-center mt-3 align-items-center">
+                <div class="col-md-4">
+                    <div>
+                        <span class="d-flex flex-row" id="Name" style="font-weight:bold"></span>
+                        <span class="d-flex flex-row" id="Surname" style="font-weight:bold"></span>
+                        <span class="d-flex flex-row">You are living in the same city</span>
+                        <hr>
+                        <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam doloribus vitae magnam illum ducimus iste placeat, saepe libero. Blanditiis beatae enim dicta neque placeat possimus corrupti quisquam necessitatibus tempora excepturi!</span>
+                        <hr>
+
+                        <span class="badge bg-secondary">New</span>
+                        <span class="badge bg-secondary">New</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+</div> 
+<script type="text/javascript">
+    $(function () {
+        $("#personID").click()(function () {
+            var ID = 1;
+            $.ajax({
+                url: '/Finder/GetID/' + ID,
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    $("#Name").html(data.Name);
+                    $("#Surname").html(data.Surname);
+                },
+                error: function (data) {
+                    alert('basariziz');
+                }
+
+            });
+            //
+        });
+    });
+</script>
